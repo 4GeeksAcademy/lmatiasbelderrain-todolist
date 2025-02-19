@@ -15,6 +15,16 @@ const agregarTarea=(e)=>{
 		setLista([...lista,tarea])
 setTarea("")
 	}
+}    
+
+const eliminarTarea = (indice)=>{
+	if (indice >= 0 && indice < lista.length) {
+        const nuevaLista = lista.filter((item, i) => i !== indice);  
+        setLista(nuevaLista);
+    } else {
+        alert("Índice no válido");
+    }
+	
 }
 	return (
 		<div className="text-center container">
@@ -39,7 +49,10 @@ setTarea("")
 				{lista.map((item,id)=>(
 					<li className="list-group-item" key={id}>
 						{item}
-						<button className="btn btn-outline-danger float-end">X</button>
+						<button className="btn btn-outline-danger float-end icono"
+						
+						onClick={()=>eliminarTarea(id)}
+						>X</button>
 						</li>
 				))}
 			</ul>
